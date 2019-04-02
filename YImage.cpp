@@ -10,7 +10,8 @@ GitHub: https://github.com/yig/yimg
 #include <cstring>
 
 #include <string>
-#include <algorithm> // tolower
+#include <algorithm>
+#include <cctype>
 
 
 // For load()
@@ -390,7 +391,7 @@ const
     assert( m_width > 0 && m_height > 0 );
     
     std::string extension = os_path_splitext( fname ).second;
-    std::transform( extension.begin(), extension.end(), extension.begin(), std::tolower );
+    std::transform( extension.begin(), extension.end(), extension.begin(), ::tolower);
     
     // These functions need swizzled data.
     SwizzleToRGBA( m_data, m_width*m_height );
